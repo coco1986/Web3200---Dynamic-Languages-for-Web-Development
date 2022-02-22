@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block body_content %}
+<div class="container col-lg-9 mt-3">
+    <div class="row">
+        <div class="col">
+            <h2>Welcome to Books!!!</h2>
+            <a href="{{url_for('books_page')}}" class="book-link">See our books</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

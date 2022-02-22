@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Books!!</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<style>
+    a:link {
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    a.hover_white:hover {
+        color: lightgray !important;
+        font-weight: 600;
+    }
+    a.book-link:hover {
+        text-decoration: underline;
+    }
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1140px;
+        padding-right: 15px;
+        padding-left: 15px;
+        width: 100%;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav mb-2 mt-2">
+                <li class="nav-item-active mr-3">
+                    <a href="{{url_for('home')}}" class="text-white">Home</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a href="{{url_for('books_page')}}" class="text-muted hover_white">See Our Books</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url_for('contact_page')}}" class="text-muted hover_white">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% block body_content %}
+    {% endblock %}
+</body>
+</html>
