@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<h1>Some JINJA2 Exercises/Demos:</h1>
+
+<hr>
+<ul>
+ <h3>Iterate through a list and use a conditional:</h3>
+{% for fruit in my_fruit_list %}
+    {% if fruit == "limes" %}
+        <li style="color:green;font-size:2em">{{fruit}}</li>
+    {% else %}
+        <li>{{fruit}}</li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+<hr>
+<h3>Iterate through a list of dictionaries:</h3>
+<dl>
+{% for person in my_person_list %}
+    <dt>Name:
+        <a href="\">{{person.name}}</a>
+    </dt>
+    <dd>Age:
+        {{person.age}}
+    </dd>
+{% endfor %}
+</dl>
+
+<hr>
+<h3>Macro Demo:</h3>
+<dl>
+{% for person in my_person_list %}
+    {{ my_macro(person.name, person.age) }}
+{% endfor %}
+</dl>
+
+<hr>
+<h3>Sort By Name:</h3>
+{# https://jinja.palletsprojects.com/en/2.11.x/templates/#builtin-filters #}
+{% for person in my_person_list | sort(attribute="name") %}
+    {{ my_macro(person.name, person.age) }}
+{% endfor %}
+</dl>
+
+<hr>
+<h3>Assigning variables and comparing strings and ints in Jinja:</h3>
+
+{% set my_string = '5' %}
+{% set my_int = 5 %}
+
+my_string: {{ my_string }}<br>
+my_int: {{ my_int }}<br>
+
+{% if my_string == my_int    %}
+ my_string and my_int are equal<br>
+{% else %}
+ my_string and my_int are not equal but . . . .<br>
+{% endif %}
+
+{% if my_string == my_int | string    %}
+ my_string and "my_int | string" are equal<br>
+{% else %}
+ my_string and my_int are not equal<br>
+{% endif %}
+
+{% endblock %}
+
+
+
+

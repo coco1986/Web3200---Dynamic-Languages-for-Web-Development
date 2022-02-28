@@ -1,0 +1,16 @@
+{% macro my_macro(name, age) %}
+    <dt>Name:
+        <a href="\">{{name}}</a>
+    </dt>
+    <dd>Age:
+        {{age}}
+    </dd>
+{% endmacro %}
+
+{% macro nav_link(endpoint, name) %}
+{% if request.endpoint.endswith(endpoint) %}
+  <li class="nav-item " ><a class="nav-link active" href="{{ url_for(endpoint) }}">{{name}} </a></li>
+{% else %}
+  <li class="nav-item " ><a class="nav-link inactive" href="{{ url_for(endpoint) }}"> {{name}}</a></li>
+{% endif %}
+{% endmacro %}

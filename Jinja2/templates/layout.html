@@ -1,0 +1,72 @@
+{% from "macros.html" import my_macro with context %}
+{% from "macros.html" import nav_link with context %}
+<!doctype html>
+<html>
+
+<head>
+  <title>Jinja Demo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/static/my.css" >
+
+  <style>
+  .card{margin-top: 10px}
+  .container{margin-top: 10vh}
+  .active{color: white}
+  .inactive{color: gray}
+  </style>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+            {{ nav_link('home', 'Home') }}
+            {{ nav_link('contact_me', 'Contact Me') }}
+            {# TODO: nav_link macro doesn't accomodate routes like grades that pass parameters, eventually need to enhance it #}
+            {% if request.endpoint.endswith('grades') %}
+              <li class="nav-item " ><a class="nav-link active" href="{{ url_for('grades', column_name='name') }}">Grades </a></li>
+            {% else %}
+              <li class="nav-item " ><a class="nav-link inactive" href="{{ url_for('grades', column_name='name') }}"> Grades</a></li>
+            {% endif %}
+      </ul>
+
+    </div>
+
+    </div>
+  </nav>
+
+
+
+  <div class="container">
+   <div class="row">
+     <div class="col-md-4">
+     </div>
+     <div class="col-md-4">
+         {% block main %}
+         {% endblock %}
+     </div>
+     <div class="col-md-4">
+     </div>
+   </div>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+

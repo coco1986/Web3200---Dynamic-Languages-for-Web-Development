@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<table>
+    <thead>
+      <tr>
+        <th scope="col"><a style="color:white" href="{{url_for('grades', column_name='name')}}">Name</a></th>
+        <th scope="col"><a style="color:white" href="{{url_for('grades', column_name='grade')}}">Grade</a></th></a>
+      </tr>
+    </thead>
+    <tbody>
+    {% for person in my_person_list | sort(attribute=column_sort_name)  %}
+        {% if person.grade|int <= 25 %}
+        <tr style="background-color: red"><td>{{person.name}}</td><td>{{person.grade}}</td>
+        {% else %}
+        <tr><td>{{person.name}}</td><td>{{person.grade}}</td>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
