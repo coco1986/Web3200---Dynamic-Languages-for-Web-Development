@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <script type="text/javascript" src="{{ url_for('static', filename='permute.js') }}"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body onload="init()">
+    <div id="mastermindContainer">
+      <h2>Munster Mind</h2>
+      <div id="enigma">
+      </div>
+
+      <div id="mastermindBoard">
+      </div>
+
+      <div id="pegs">
+      </div>
+
+      <div id="colorSelector" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+
+      <div id="controls">
+        <button id="newGame" onclick="location.reload()">New Game</button>
+        <button id="checkGuess" onclick="checkUsersAnswer()" disabled>Check Guess</button>
+        <input id="enigmaCheckBox" type="checkbox" onclick="revealEnigma()">Show Enigma
+        <!--<button id="checkGuess" onclick='dev(["red","green","blue","orange"], ["white","green","black","orange"], 1)' >Dev<br> (sends sample request)<br>Check Console</button>-->
+      </div>
+
+      <div id="hint">
+        <span>Remaining Possible Permutations </span><span id="remainingComboNumber"></span>
+        <div id="remainingCombos"></div>
+
+      </div>
+    </div>
+  </body>
+</html>
